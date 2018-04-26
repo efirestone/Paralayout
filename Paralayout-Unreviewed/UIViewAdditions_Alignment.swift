@@ -18,62 +18,7 @@ import UIKit
 
 
 /// Locations within a rectangle.
-public enum Position {
-    
-    case topLeft, topCenter, topRight
-    case leftCenter, center, rightCenter
-    case bottomLeft, bottomCenter, bottomRight
-    
-    /// The "opposite" position.
-    /// - parameter horizontally: Whether to reflect left and right positions (optional, defaults to `true`).
-    /// - parameter vertically: Whether to reflect top and bottom positions (optional, defaults to `true`).
-    /// - returns: A position on the opposite side/corner as specified.
-    public func reflected(horizontally: Bool = true, vertically: Bool = true) -> Position {
-        switch self {
-        case .topLeft:
-            if horizontally {
-                return vertically ? .bottomRight : .topRight
-            } else {
-                return vertically ? .bottomLeft : .topLeft
-            }
-            
-        case .topCenter:
-            return vertically ? .bottomCenter : .topCenter
-            
-        case .topRight:
-            if horizontally {
-                return vertically ? .bottomLeft : .topLeft
-            } else {
-                return vertically ? .bottomRight : .topRight
-            }
-            
-        case .leftCenter:
-            return horizontally ? .rightCenter : .leftCenter
-            
-        case .center:
-            return .center
-            
-        case .rightCenter:
-            return horizontally ? .leftCenter : .rightCenter
-            
-        case .bottomLeft:
-            if horizontally {
-                return vertically ? .topRight : .bottomRight
-            } else {
-                return vertically ? .topLeft : .bottomLeft
-            }
-            
-        case .bottomCenter:
-            return vertically ? .topCenter : .bottomCenter
-            
-        case .bottomRight:
-            if horizontally {
-                return vertically ? .topLeft : .bottomLeft
-            } else {
-                return vertically ? .topRight : .bottomRight
-            }
-        }
-    }
+extension Position {
     
     /// The position in a specific rectangle.
     /// - parameter rect: The rect for which to interpret the position.
